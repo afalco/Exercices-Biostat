@@ -1,0 +1,90 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\title{Probabilités}
+\date{Exercices}
+\begin{document}
+\maketitle
+\begin{enumerate}
+\item Un examen comporte quinze questions, chacune ayant trois r\'eponses possibles. Supposons que 70\% des  \'etudiants passant l'examen sont bien pr\'epar\'es et r\'epondent correctement \`a chaque question avec une probabilit\'e de 0.8; les 30\% restants r\'epondent au hasard.
+\begin{enumerate}
+\item Caract\'eriser la distribution de $S,$ la note de chaque \'etudiant, si un point est accord\'e \`a chaque bonne r\'eponse.
+\item Il faut huit bonnes r\'eponses pour r\'eussir l’examen. Conditionnellement au fait qu’un \'etudiant r\'eussisse un examen, quelle est la probabilit\'e qu’il \'etait bien pr\'epar\'e?
+\end{enumerate}
+\item Le paradoxe de Simpson fournit une illustration de la n\'ecessit\'e d’une approche conditionnelle en Statistique. Soient deux traitements m\'edicaux, $T1$ et $T2,$ $T1$  \'etant appliqu\'e \`a cinquante patients et $T2$ \`a 
+cinquante autres. Le r\'esultat de cette exp\'erience donne les pourcentages de survie suivants : 40\% pour le traitement $T1,$ 32\% pour le traitement $T2.$ Donc le traitement $T1$ semble meilleur puisqu'il entra\^ine un taux de survie plus  \'elev\'e. Cependant, si on prend l’\^age en compte, et l'on s\'epare les patients entre juniors (50) et seniors $(50),$ les taux de succ\'es sont donn\'es dans la table suivante :
+\begin{center}
+\begin{tabular}{ccc}
+ & $T1$ & $T2$  \\
+ junior & 40\% & 50\% \\ 
+ senior & 10\% &35\%
+\end{tabular}
+\end{center}
+et $T1$ est moins bon que $T2$ dans les deux cas. Expliquer ce paradoxe en utilisant la probabilit\'e conditionnelle et le th\'eor\`eme de Bayes.Bayes
+\item Prenons le cas du d\'epsitage du cancer du col d'ut\'erus par frottis sanguin. Ce test bien que simple \`a r\'ealiser, est assez impr\'ecis: il y a un sensibilit\'e (la proportion des personnes atteintes pour lequel il est positif) d'environ 70\%, et une sp\'ecificit\'e (la proportion des personnes non atteintes pour lequel il est n\'egatif) d'environ 98\%. De plus l'incidence de la maladie est d'environ d'une femme sur 10000. Quelle est la probabilit\'e qu'une personne test\'ee soit atteinte d'un cancer si le test est positif?
+\item Des estimations de la pr\'evalence de la maladie d'Alzheimer ont été récemment fournies par Pfeffer et al. [8] Les estimations sont présentées au tableau 
+\begin{center}
+Prévalence de la maladie d’Alzheimer (cas pour 100 habitants)
+
+\vspace{0.2cm}
+
+\begin{tabular}{ccc}
+\hline
+Tranche d'âge & hommes & femmes \\
+\hline
+65–69 & 1.6 & 0.0 \\
+70–74 &  0.0 & 2.2 \\
+75–79 & 4.9 & 2.3 \\ 
+80–84 & 8.6  & 7.8 \\
+85+ &  35.0 & 27.9 \\
+\hline
+\end{tabular}
+\end{center}
+Supposons qu'un homme de 77 ans, une femme de 76 ans et une femme de 82 ans non liés soient choisis dans une communauté.
+\begin{enumerate}
+\item Quelle est la probabilité que ces trois personnes soient atteintes de la maladie d’Alzheimer?
+\item Quelle est la probabilité qu’au moins une des femmes soit atteinte de la maladie d’Alzheimer?
+\item Quelle est la probabilité qu’au moins une des trois personnes soit atteinte de la maladie d’Alzheimer?
+\item  Quelle est la probabilité qu’une des trois personnes soit atteinte de la maladie d’Alzheimer?
+\item Supposons que l’une des trois personnes soit atteinte de la maladie d’Alzheimer, sans savoir laquelle. Quelle est la probabilité conditionnelle que la personne touchée soit une femme?
+\item Supposons que nous savons que deux des trois personnes sont atteintes de la maladie d’Alzheimer. Quelle est la probabilité conditionnelle qu'il s'agisse de deux femmes?
+\item Supposons que nous savons que deux des trois personnes sont atteintes de la maladie d’Alzheimer. Quelle est la probabilité conditionnelle qu'ils aient tous les deux moins de 80 ans?
+\end{enumerate}
+\item Une étude de validation doit être réalisée dans un hôpital local pour vérifier l'exactitude de l'évaluation de l'infection $(INF)$ acquise en milieu hospitalier après un pontage coronarien (pontage coronarien ou pontage coronarien). Au cours d’une année donnée, l’hôpital effectue 1100 procédures de pontage aortique. Un algorithme des Centres de contrôle et de prévention des maladies $(CDC)$ est actuellement utilisé pour classer les sujets comme ayant un $INF.$ Pour valider cet algorithme, tous les sujets $CDC+$ $(N = 100)$ et un échantillon aléatoire de sujets $CDC-$ $(N = 1000)$ seront vérifiés par un boursier spécialiste des maladies infectieuses (ID) et une enquête détaillée sera effectuée, y compris une analyse comparative. examen des dossiers et documentation de l'utilisation des antibiotiques. Supposons que la détermination du boursier est correcte.
+Supposons que 100 sujets $CDC+$ soient identifiés, et que le boursier en confirme 80. En raison du grand nombre de sujets $CDC-$ (1000), seul un échantillon de 100 est étudié, et le boursier en confirme 90.
+\begin{enumerate}
+\item Quel est le $P(INF|CDC+)$ de l'algorithme $CDC$? 
+\item Quel est le $P(NINF|CDC-)$ de l'algorithme $CDC$? 
+\item Quelle est la sensibilité de l'algorithme $CDC$? 
+\item Quelle est la spécificité de l'algorithme $CDC$?
+\end{enumerate}
+\item Le cancer du sein est largement considéré comme une maladie hormonale. L'estradiol est une hormone importante dans la recherche sur le cancer du sein. Les données du tableau sur les taux sériques d'estradiol ont été obtenues chez 213 cas de cancer du sein et 432 témoins du même âge. Toutes les femmes étaient âgées de 50 à 59 ans.
+\begin{center}
+Données sur le sérum-estradiol
+
+\vspace{0.2cm}
+
+\begin{tabular}{ccc}
+\hline
+Serum estradiol (pg/mL) & Cases $(N=213)$ & Contrôles $(N=432)$ \\
+\hline
+1–4 & 28 & 72 \\
+5–9 & 96 & 233 \\
+10–14 & 53 & 86 \\
+15–19 & 17 & 26 \\
+20–24 & 10 & 6 \\
+25-29 & 3 & 5 \\
+30+ & 6 & 4 \\
+\hline
+\end{tabular}
+\end{center}
+Supposons qu'un taux sérique d'estradiol supérieur à 20 pg/ml soit proposé comme critère de dépistage pour l'identification des cas de cancer du sein.
+\begin{enumerate}
+\item Quelle est la sensibilité de ce test? 
+\item Quelle est la spécificité de ce test?
+\item L'échantillon précédent a été sélectionné pour sur échantillonner les cas. Dans la population générale, la prévalence du cancer du sein est d'environ 2\% chez les femmes âgées de 50 à 59 ans. Quelle est la probabilité de cancer du sein chez les femmes de la population générale âgées de 50 à 59 ans présentant un taux sérique d'estradiol $\ge$ 20 pg / mL?
+\end{enumerate}
+
+\end{enumerate}
+
+
+\end{document}
