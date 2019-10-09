@@ -1,0 +1,96 @@
+---
+title: "Problème 1"
+author: "Antonio Falcó"
+date: "10/8/2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Question
+
+Un examen comporte quinze questions, chacune ayant trois réponses possibles. Supposons que 70\% des  étudiants passant l'examen sont bien préparés et répondent correctement à chaque question avec une probabilité de 0.8; les 30\% restants répondent au hasard.
+
+1. Caractériser la distribution de $S,$ la note de chaque étudiant, si un point est accordé à chaque bonne réponse.
+2. Il faut huit bonnes réponses pour réussir l’examen. Conditionnellement au fait qu’un étudiant réussisse un examen, quelle est la probabilité qu’il était bien préparé?
+
+## Reponse
+
+Soit $E \equiv$ ensemble des étudiants et $S \equiv$ note obtenu par l'étudiant à l’examen.
+Alors, l'ensemble de tous les étudiants on peut l'écrire comme:
+$$E = \bigcup_{k=0}^{15}\{S=k\}$$
+où $\{S=k\} \equiv$ l'ensemble des étudiants qui a repondu l'examen avec $k$ bonnes reponses, avec $0 \le k \le 15.$ Soit $RC \equiv$ l'événement avoir une réponse quelqu'un correcte, alors
+on peut rejoint l'événement $\{S=k\}$ avec l'événement
+$$
+ \overbrace{\{RC\} \cap \{RC\} \cap \cdots \cap \{RC\}}^{k} \cap \overbrace{\{\overline{RC}\}\cap \cdots \cap  \{\overline{RC}\}}^{15-k}.
+$$
+On peut penser qu'on a une urne avec $15$ boules numérotés $\{1,2,\ldots,15\}$ et on choix $k$ en représentant les
+$k$ questions bien répondues, alors ce $k$ questions on peut les choisir entre les $15$ possibles avec une 
+totale de $\binom{15}{k}$-combinaisons. Supposant que toutes les réponses sont indépendantes on a:
+$$
+\Pr(\{S=k\}) = \binom{15}{k} \Pr(RC)^{k} \Pr(\overline{RC})^{15-k}
+$$
+où $\Pr(\overline{RC})= 1-\Pr(RC)$ et alors tout depends de la conaissance de la probabilité
+$\Pr(RC).$ Pour le calculer on utilise la probabilité totale avec l'aide de l'événement
+$$
+Examen \cap BP \equiv \text{ensemble des étudiants passant l'examen et sont bien préparés}.
+$$
+Il est la combinaison de les deux événements:
+$$
+Examen \equiv \text{reussir l'examen}
+$$
+et 
+$$
+BP \equiv \text{l'étudiant est bien préparé}.
+$$
+Alors, avec la probabilité totale:
+$$
+\Pr(RC) = \Pr(RC|Examen \cap BP)\Pr(Examen \cap BP)+\Pr(RC|\overline{Examen \cap BP})\Pr(\overline{Examen \cap BP})
+$$
+comme $$\Pr(RC|Examen \cap BP)=0.8,$$ $$\Pr(Examen \cap BP) = 0.7,$$ $$\Pr(\overline{Examen \cap BP}) = 1-\Pr(Examen \cap BP) =0.3$$ et $$\Pr(RC|\overline{Examen \cap BP})=1/3,$$ d'où
+```{r}
+p <- 0.8*0.7+(1/3)*0.3
+p
+```
+En particulier, $S$ est un variable que suit une loi binomiale avec $n=15$ et $p=0.66.$ On va construire la distribution de $S$ parmi la fonction
+$$
+k \mapsto \Pr(S=k)=\binom{15}{k} 0.66^k 0.33^{15-k}
+$$
+avec le logiciel R:
+```{r}
+n <- 15
+k <- seq(from=0,to=n,by=1)
+S <- dbinom(k,n,p)
+```
+## La distribution de probabilité de $S$
+
+```{r}
+plot(k,S,ylab = "Pr(S=k)" ,col='blue')
+```
+
+Maintenant (avec 2.) on sait que l'événement réussi l'examen:
+$$
+Examen = \{S \ge 8\}.
+$$
+ce que nous permet de calculer
+$$
+\Pr(Examen) = \Pr(\{S \ge 8\}) = 1 -\Pr(\{S \le 7\})
+$$
+avec le logiciel R:
+```{r}
+Pr.Examen <- 1 - pbinom(7,n,p)
+Pr.Examen
+```
+Alors on a de calculer 
+$$
+\Pr(BP|Examen) = \frac{\Pr(BP \cap Examen)}{\Pr(Examen)} = \frac{0.7}{0.9022} = 0.7758812.
+$$ 
+
+## Question (à rentrer) pour jeudi 10/10/2019
+
+Expliquer en utilissant les axiomes de la probabilité pourquoi on peut écrire l'égalité
+$$
+\Pr(\{S \ge 8\}) = 1 -\Pr(\{S \le 7\})
+$$
