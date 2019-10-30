@@ -1,0 +1,64 @@
+---
+title: "Exercices à rendre"
+author: "Antonio Falcó"
+date: "30/10/2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+1. Si on connaît qu'une maladie rare à une moyenne de 2 malades par an. Quelle est la probabilité de trouver $0$ malades pendant un an?
+2. Si on connaît que il y a deux populations indépendantes ou la taille suivi un distribution normal $N(120,3)$ et $N(140,5)$ cm. chacun. Quelle est la probabilité de que la différence de taille a une valeur absolue inférieure à 3 cm?
+
+## Reponse 1
+
+$X \equiv$ nombre malades/an
+
+$E[X]=2$ personnes/an
+
+$\lambda = 2$ alors $\Pr(X=0|\lambda = 2)$
+
+```{r}
+ppois(0,2)*100
+exp(-2)*100
+```
+
+## Reponse 2
+
+$X \equiv N(120,3)$ taille en cm chez population 1
+$Y \equiv N(140,5)$ taille en cm chez population 2
+
+la différence de taille en cm en valeur absolue: $|X-Y|$
+
+$$
+X -Y \equiv N(120-140,\sqrt{3^2+5^2})=N(-20,\sqrt{34})
+$$
+```{r}
+mu <- 120-140
+mu
+sigma <- sqrt(3^2+5^2)
+sigma
+```
+
+
+$$
+\Pr(|X-Y| < 3)=\Pr(-3<X-Y<3)=\Pr(X-Y < 3)-\Pr(X-Y < -3)
+$$
+
+```{r}
+pnorm(3,mu,sigma)-pnorm(-3,mu,sigma)
+```
+$$
+\Pr(X-Y < 3)
+$$
+```{r}
+pnorm(3,mu,sigma)
+```
+$$
+\Pr(X-Y < -3)
+$$
+```{r}
+pnorm(-3,mu,sigma)
+```
