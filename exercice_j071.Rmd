@@ -1,0 +1,55 @@
+---
+title: "Exercice"
+author: "Antonio Falcó"
+date: "7/11/2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Enoncé
+
+Soit la taille d'une population $X\sim N(\mu,\sigma=3.2)$ cm. Calculer la taille de l'échantillon $n$ pour trouver un erreur entre la moyenne empirique
+$\overline{X}=\frac{X_1+\cdots+X_n}{n}$  qu'on calcul avec le logiciel R et la vrai moyenne $\mu$ que soit inferieur à $0.1$ avec un probabilité de $0.95$
+
+## Reponse
+
+On connaît que $\overline{X} \sim N(\mu,\frac{3.2}{\sqrt{n}}),$ alors on a de checher la valeur de $n$ telle que
+$$
+\Pr\left( |\overline{X}-\mu| < 0.1 \right)=0.95 = 1-0.05.
+$$
+il est equivalent à
+$$
+\Pr\left( \frac{|\overline{X}-\mu|}{\frac{3.2}{\sqrt{n}}}< \frac{0.1}{\frac{3.2}{\sqrt{n}}} \right)=0.95 = 1-0.05.
+$$ 
+où
+$$
+\frac{|\overline{X}-\mu|}{\frac{3.2}{\sqrt{n}}} = \left| \frac{\overline{X}-\mu}{\frac{3.2}{\sqrt{n}}}\right| = |Z|
+$$
+avec $Z:=\frac{\overline{X}-\mu}{\frac{3.2}{\sqrt{n}}}$
+On peut concluir qu'on cherche $n$ tel que
+$$
+\Pr\left(|Z| < \frac{0.1}{\frac{3.2}{\sqrt{n}}}\right) = \Pr\left(-\frac{0.1}{\frac{3.2}{\sqrt{n}}} < Z < \frac{0.1}{\frac{3.2}{\sqrt{n}}}\right) = 1-0.05.
+$$
+Alors
+$$
+-\frac{0.1}{\frac{3.2}{\sqrt{n}}} = \texttt{qnorm}(0.05/2).
+$$
+ou
+$$
+\frac{0.1}{\frac{3.2}{\sqrt{n}}} =  \texttt{qnorm}(1-0.05/2)
+$$
+```{r}
+qnorm(1-0.05/2)
+```
+En consequence
+$$
+1.959964 = \frac{0.1}{\frac{3.2}{\sqrt{n}}} \Rightarrow 1.959964 = \frac{0.1 \sqrt{n}}{3.2} \Rightarrow \sqrt{n} = \frac{1.959964 \times 3.2}{0.1}
+$$
+```{r}
+n <- ((1.959964*3.2)/0.1)^2
+n
+```
+On peut concluir que on a besoin de un échantillon de au moins $3934$ individues.
